@@ -8,11 +8,12 @@
     <title>Keyboard Tester</title>
     <style>
       .key {
-        border: 1px solid #000;
+        border: 1px solid #FFF;
         border-radius: 4px;
         margin: 2px;
         padding: 2px;
         display: flex;
+        color: white;
       }
       .key * {
         font-size: 12px;
@@ -168,6 +169,7 @@
     </div>
 
     <script>
+    const highlightColor = "#fa95ff"
     const numMap = {
       home: 'num7',
       end: 'num1',
@@ -191,24 +193,24 @@
       if (['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', '/', '-', 'enter'].indexOf(keyName) !== -1) {
         if (e.location === 3) {
           const key = document.getElementById("num" + keyName);
-          key.style.background = '#ffd666';
+          key.style.background = highlightColor;
           return;
         }
       }
       if (['home', 'end', 'pageup', 'pagedown', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'clear', 'insert', 'delete'].indexOf(keyName) !== -1) {
         if (e.location === 3) {
           const key = document.getElementById(numMap[keyName]);
-          key.style.background = '#ffd666';
+          key.style.background = highlightColor;
           return;
         }
       }
       if (['shift', 'control', 'alt', 'meta'].indexOf(keyName) !== -1) {
         const key = document.getElementById(lrMap[e.location - 1] + keyName);
-        key.style.background = '#ffd666';
+        key.style.background = highlightColor;
         return;
       }
       const key = document.getElementById(keyName);
-      key.style.background = '#ffd666';
+      key.style.background = highlightColor;
     }
     function onKeyUpHandle(e) {
       e.preventDefault();
@@ -235,7 +237,7 @@
       }
       if (keyName === 'printscreen') {
         const key = document.getElementById(keyName);
-        key.style.background = '#ffd666';
+        key.style.background = highlightColor;
         const timer = setTimeout(function() {
           key.style.background = 'initial';
           clearTimeout(timer);
